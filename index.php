@@ -55,23 +55,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $allowed_extensions = array("jpg", "jpeg", "png", "gif");
             $max_file_size = 5 * 1024 * 1024;
 
-            if (!in_array($file_ext, $allowed_extensions)) {
-                $errors[] = "File type not allowed. Please upload an image.(JPG, JPEG, PNG, GIF).";
-            }
+            // if (!in_array($file_ext, $allowed_extensions)) {
+            //     $errors[] = "File type not allowed. Please upload an image.(JPG, JPEG, PNG, GIF).";
+            // }
             if ($file_size > $max_file_size) {
                 $errors[] = "Image size is too large. Maximum 5MB.";
             }
 
-            if (empty($errors)) {
-                $new_file_name = uniqid('img_', true) . '.' . $file_ext;
-                $target_file = $target_dir . $new_file_name;
+            // if (empty($errors)) {
+            //     $new_file_name = uniqid('img_', true) . '.' . $file_ext;
+            //     $target_file = $target_dir . $new_file_name;
 
-                if (move_uploaded_file($file_tmp_name, $target_file)) {
-                    $uploaded_image_filename = $new_file_name;
-                } else {
-                    $errors[] = "An error occurred while loading the image. Please try again.";
-                }
-            }
+            //     if (move_uploaded_file($file_tmp_name, $target_file)) {
+            //         $uploaded_image_filename = $new_file_name;
+            //     } else {
+            //         $errors[] = "An error occurred while loading the image. Please try again.";
+            //     }
+            // }
         } else {
             if (isset($_FILES["image"]) && $_FILES["image"]["error"] == UPLOAD_ERR_NO_FILE) {
                 $errors[] = "Please select a profile image.";
